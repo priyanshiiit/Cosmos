@@ -55,6 +55,8 @@ message QueryGetPostRequest {
 
 message QueryGetPostResponse {
 	Post Post = 1;
+	repeated Comment Comment = 2;
+	cosmos.base.query.v1beta1.PageResponse pagination = 3;
 }
 
 message QueryAllPostRequest {

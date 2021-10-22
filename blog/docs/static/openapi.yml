@@ -10359,6 +10359,172 @@ paths:
           type: boolean
       tags:
         - Query
+  /example/blog/blog/comment:
+    get:
+      summary: Queries a list of comment items.
+      operationId: ExampleBlogBlogCommentAll
+      responses:
+        '200':
+          description: A successful response.
+          schema:
+            type: object
+            properties:
+              Comment:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    creator:
+                      type: string
+                    id:
+                      type: string
+                      format: uint64
+                    body:
+                      type: string
+                    postID:
+                      type: string
+              pagination:
+                type: object
+                properties:
+                  nextKey:
+                    type: string
+                    format: byte
+                    title: |-
+                      next_key is the key to be passed to PageRequest.key to
+                      query the next page most efficiently
+                  total:
+                    type: string
+                    format: uint64
+                    title: >-
+                      total is total number of results available if
+                      PageRequest.count_total
+
+                      was set, its value is undefined otherwise
+                description: >-
+                  PageResponse is to be embedded in gRPC response messages where
+                  the
+
+                  corresponding request message has used PageRequest.
+
+                   message SomeResponse {
+                           repeated Bar results = 1;
+                           PageResponse page = 2;
+                   }
+        default:
+          description: An unexpected error response.
+          schema:
+            type: object
+            properties:
+              code:
+                type: integer
+                format: int32
+              message:
+                type: string
+              details:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    '@type':
+                      type: string
+                  additionalProperties: {}
+      parameters:
+        - name: pagination.key
+          description: |-
+            key is a value returned in PageResponse.next_key to begin
+            querying the next page most efficiently. Only one of offset or key
+            should be set.
+          in: query
+          required: false
+          type: string
+          format: byte
+        - name: pagination.offset
+          description: >-
+            offset is a numeric offset that can be used when key is unavailable.
+
+            It is less efficient than using key. Only one of offset or key
+            should
+
+            be set.
+          in: query
+          required: false
+          type: string
+          format: uint64
+        - name: pagination.limit
+          description: >-
+            limit is the total number of results to be returned in the result
+            page.
+
+            If left empty it will default to a value to be set by each app.
+          in: query
+          required: false
+          type: string
+          format: uint64
+        - name: pagination.countTotal
+          description: >-
+            count_total is set to true  to indicate that the result set should
+            include
+
+            a count of the total number of items available for pagination in
+            UIs.
+
+            count_total is only respected when offset is used. It is ignored
+            when key
+
+            is set.
+          in: query
+          required: false
+          type: boolean
+      tags:
+        - Query
+  '/example/blog/blog/comment/{id}':
+    get:
+      summary: Queries a comment by id.
+      operationId: ExampleBlogBlogComment
+      responses:
+        '200':
+          description: A successful response.
+          schema:
+            type: object
+            properties:
+              Comment:
+                type: object
+                properties:
+                  creator:
+                    type: string
+                  id:
+                    type: string
+                    format: uint64
+                  body:
+                    type: string
+                  postID:
+                    type: string
+        default:
+          description: An unexpected error response.
+          schema:
+            type: object
+            properties:
+              code:
+                type: integer
+                format: int32
+              message:
+                type: string
+              details:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    '@type':
+                      type: string
+                  additionalProperties: {}
+      parameters:
+        - name: id
+          in: path
+          required: true
+          type: string
+          format: uint64
+      tags:
+        - Query
   /example/blog/blog/post:
     get:
       operationId: ExampleBlogBlogPostAll
@@ -10477,7 +10643,6 @@ paths:
         - Query
   '/example/blog/blog/post/{id}':
     get:
-      summary: 'this line is used by starport scaffolding # 2'
       operationId: ExampleBlogBlogPost
       responses:
         '200':
@@ -25567,6 +25732,28 @@ definitions:
     description: >-
       MsgCreateVestingAccountResponse defines the Msg/CreateVestingAccount
       response type.
+  example.blog.blog.Comment:
+    type: object
+    properties:
+      creator:
+        type: string
+      id:
+        type: string
+        format: uint64
+      body:
+        type: string
+      postID:
+        type: string
+  example.blog.blog.MsgCreateCommentResponse:
+    type: object
+    properties:
+      id:
+        type: string
+        format: uint64
+  example.blog.blog.MsgDeleteCommentResponse:
+    type: object
+  example.blog.blog.MsgUpdateCommentResponse:
+    type: object
   example.blog.blog.Post:
     type: object
     properties:
@@ -25578,6 +25765,48 @@ definitions:
         type: string
       body:
         type: string
+  example.blog.blog.QueryAllCommentResponse:
+    type: object
+    properties:
+      Comment:
+        type: array
+        items:
+          type: object
+          properties:
+            creator:
+              type: string
+            id:
+              type: string
+              format: uint64
+            body:
+              type: string
+            postID:
+              type: string
+      pagination:
+        type: object
+        properties:
+          nextKey:
+            type: string
+            format: byte
+            title: |-
+              next_key is the key to be passed to PageRequest.key to
+              query the next page most efficiently
+          total:
+            type: string
+            format: uint64
+            title: >-
+              total is total number of results available if
+              PageRequest.count_total
+
+              was set, its value is undefined otherwise
+        description: |-
+          PageResponse is to be embedded in gRPC response messages where the
+          corresponding request message has used PageRequest.
+
+           message SomeResponse {
+                   repeated Bar results = 1;
+                   PageResponse page = 2;
+           }
   example.blog.blog.QueryAllPostResponse:
     type: object
     properties:
@@ -25619,6 +25848,21 @@ definitions:
                    repeated Bar results = 1;
                    PageResponse page = 2;
            }
+  example.blog.blog.QueryGetCommentResponse:
+    type: object
+    properties:
+      Comment:
+        type: object
+        properties:
+          creator:
+            type: string
+          id:
+            type: string
+            format: uint64
+          body:
+            type: string
+          postID:
+            type: string
   example.blog.blog.QueryGetPostResponse:
     type: object
     properties:

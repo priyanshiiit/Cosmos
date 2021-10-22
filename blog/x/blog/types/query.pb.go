@@ -30,6 +30,190 @@ var _ = math.Inf
 const _ = proto.GoGoProtoPackageIsVersion3 // please upgrade the proto package
 
 // this line is used by starport scaffolding # 3
+type QueryGetCommentRequest struct {
+	Id uint64 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+}
+
+func (m *QueryGetCommentRequest) Reset()         { *m = QueryGetCommentRequest{} }
+func (m *QueryGetCommentRequest) String() string { return proto.CompactTextString(m) }
+func (*QueryGetCommentRequest) ProtoMessage()    {}
+func (*QueryGetCommentRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_6e22cd6d352f3384, []int{0}
+}
+func (m *QueryGetCommentRequest) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *QueryGetCommentRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_QueryGetCommentRequest.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *QueryGetCommentRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_QueryGetCommentRequest.Merge(m, src)
+}
+func (m *QueryGetCommentRequest) XXX_Size() int {
+	return m.Size()
+}
+func (m *QueryGetCommentRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_QueryGetCommentRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_QueryGetCommentRequest proto.InternalMessageInfo
+
+func (m *QueryGetCommentRequest) GetId() uint64 {
+	if m != nil {
+		return m.Id
+	}
+	return 0
+}
+
+type QueryGetCommentResponse struct {
+	Comment *Comment `protobuf:"bytes,1,opt,name=Comment,proto3" json:"Comment,omitempty"`
+}
+
+func (m *QueryGetCommentResponse) Reset()         { *m = QueryGetCommentResponse{} }
+func (m *QueryGetCommentResponse) String() string { return proto.CompactTextString(m) }
+func (*QueryGetCommentResponse) ProtoMessage()    {}
+func (*QueryGetCommentResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_6e22cd6d352f3384, []int{1}
+}
+func (m *QueryGetCommentResponse) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *QueryGetCommentResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_QueryGetCommentResponse.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *QueryGetCommentResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_QueryGetCommentResponse.Merge(m, src)
+}
+func (m *QueryGetCommentResponse) XXX_Size() int {
+	return m.Size()
+}
+func (m *QueryGetCommentResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_QueryGetCommentResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_QueryGetCommentResponse proto.InternalMessageInfo
+
+func (m *QueryGetCommentResponse) GetComment() *Comment {
+	if m != nil {
+		return m.Comment
+	}
+	return nil
+}
+
+type QueryAllCommentRequest struct {
+	Pagination *query.PageRequest `protobuf:"bytes,1,opt,name=pagination,proto3" json:"pagination,omitempty"`
+}
+
+func (m *QueryAllCommentRequest) Reset()         { *m = QueryAllCommentRequest{} }
+func (m *QueryAllCommentRequest) String() string { return proto.CompactTextString(m) }
+func (*QueryAllCommentRequest) ProtoMessage()    {}
+func (*QueryAllCommentRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_6e22cd6d352f3384, []int{2}
+}
+func (m *QueryAllCommentRequest) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *QueryAllCommentRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_QueryAllCommentRequest.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *QueryAllCommentRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_QueryAllCommentRequest.Merge(m, src)
+}
+func (m *QueryAllCommentRequest) XXX_Size() int {
+	return m.Size()
+}
+func (m *QueryAllCommentRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_QueryAllCommentRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_QueryAllCommentRequest proto.InternalMessageInfo
+
+func (m *QueryAllCommentRequest) GetPagination() *query.PageRequest {
+	if m != nil {
+		return m.Pagination
+	}
+	return nil
+}
+
+type QueryAllCommentResponse struct {
+	Comment    []*Comment          `protobuf:"bytes,1,rep,name=Comment,proto3" json:"Comment,omitempty"`
+	Pagination *query.PageResponse `protobuf:"bytes,2,opt,name=pagination,proto3" json:"pagination,omitempty"`
+}
+
+func (m *QueryAllCommentResponse) Reset()         { *m = QueryAllCommentResponse{} }
+func (m *QueryAllCommentResponse) String() string { return proto.CompactTextString(m) }
+func (*QueryAllCommentResponse) ProtoMessage()    {}
+func (*QueryAllCommentResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_6e22cd6d352f3384, []int{3}
+}
+func (m *QueryAllCommentResponse) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *QueryAllCommentResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_QueryAllCommentResponse.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *QueryAllCommentResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_QueryAllCommentResponse.Merge(m, src)
+}
+func (m *QueryAllCommentResponse) XXX_Size() int {
+	return m.Size()
+}
+func (m *QueryAllCommentResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_QueryAllCommentResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_QueryAllCommentResponse proto.InternalMessageInfo
+
+func (m *QueryAllCommentResponse) GetComment() []*Comment {
+	if m != nil {
+		return m.Comment
+	}
+	return nil
+}
+
+func (m *QueryAllCommentResponse) GetPagination() *query.PageResponse {
+	if m != nil {
+		return m.Pagination
+	}
+	return nil
+}
+
 type QueryGetPostRequest struct {
 	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 }
@@ -38,7 +222,7 @@ func (m *QueryGetPostRequest) Reset()         { *m = QueryGetPostRequest{} }
 func (m *QueryGetPostRequest) String() string { return proto.CompactTextString(m) }
 func (*QueryGetPostRequest) ProtoMessage()    {}
 func (*QueryGetPostRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_6e22cd6d352f3384, []int{0}
+	return fileDescriptor_6e22cd6d352f3384, []int{4}
 }
 func (m *QueryGetPostRequest) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -82,7 +266,7 @@ func (m *QueryGetPostResponse) Reset()         { *m = QueryGetPostResponse{} }
 func (m *QueryGetPostResponse) String() string { return proto.CompactTextString(m) }
 func (*QueryGetPostResponse) ProtoMessage()    {}
 func (*QueryGetPostResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_6e22cd6d352f3384, []int{1}
+	return fileDescriptor_6e22cd6d352f3384, []int{5}
 }
 func (m *QueryGetPostResponse) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -126,7 +310,7 @@ func (m *QueryAllPostRequest) Reset()         { *m = QueryAllPostRequest{} }
 func (m *QueryAllPostRequest) String() string { return proto.CompactTextString(m) }
 func (*QueryAllPostRequest) ProtoMessage()    {}
 func (*QueryAllPostRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_6e22cd6d352f3384, []int{2}
+	return fileDescriptor_6e22cd6d352f3384, []int{6}
 }
 func (m *QueryAllPostRequest) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -171,7 +355,7 @@ func (m *QueryAllPostResponse) Reset()         { *m = QueryAllPostResponse{} }
 func (m *QueryAllPostResponse) String() string { return proto.CompactTextString(m) }
 func (*QueryAllPostResponse) ProtoMessage()    {}
 func (*QueryAllPostResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_6e22cd6d352f3384, []int{3}
+	return fileDescriptor_6e22cd6d352f3384, []int{7}
 }
 func (m *QueryAllPostResponse) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -215,6 +399,10 @@ func (m *QueryAllPostResponse) GetPagination() *query.PageResponse {
 }
 
 func init() {
+	proto.RegisterType((*QueryGetCommentRequest)(nil), "example.blog.blog.QueryGetCommentRequest")
+	proto.RegisterType((*QueryGetCommentResponse)(nil), "example.blog.blog.QueryGetCommentResponse")
+	proto.RegisterType((*QueryAllCommentRequest)(nil), "example.blog.blog.QueryAllCommentRequest")
+	proto.RegisterType((*QueryAllCommentResponse)(nil), "example.blog.blog.QueryAllCommentResponse")
 	proto.RegisterType((*QueryGetPostRequest)(nil), "example.blog.blog.QueryGetPostRequest")
 	proto.RegisterType((*QueryGetPostResponse)(nil), "example.blog.blog.QueryGetPostResponse")
 	proto.RegisterType((*QueryAllPostRequest)(nil), "example.blog.blog.QueryAllPostRequest")
@@ -224,32 +412,40 @@ func init() {
 func init() { proto.RegisterFile("blog/query.proto", fileDescriptor_6e22cd6d352f3384) }
 
 var fileDescriptor_6e22cd6d352f3384 = []byte{
-	// 385 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x84, 0x92, 0x4f, 0x4b, 0x02, 0x41,
-	0x18, 0xc6, 0xdd, 0xed, 0x1f, 0x4d, 0xd0, 0x9f, 0x29, 0xb0, 0x44, 0xb6, 0x58, 0x4c, 0xa3, 0x60,
-	0x06, 0xed, 0x1e, 0x58, 0x90, 0x57, 0xf3, 0x18, 0x74, 0x98, 0xd5, 0x61, 0x5b, 0x58, 0x77, 0x46,
-	0x67, 0x0c, 0x45, 0xbc, 0xd4, 0xb5, 0x43, 0xd0, 0x97, 0xea, 0x28, 0x74, 0xe9, 0x18, 0xda, 0x07,
-	0x89, 0x9d, 0x19, 0xcc, 0x4d, 0xc5, 0xcb, 0x2e, 0xbb, 0xf3, 0x3c, 0xef, 0xf3, 0x7b, 0xdf, 0x77,
-	0xc0, 0xae, 0x17, 0x32, 0x1f, 0xb7, 0x3a, 0xb4, 0xdd, 0x43, 0xbc, 0xcd, 0x24, 0x83, 0x7b, 0xb4,
-	0x4b, 0x9a, 0x3c, 0xa4, 0x28, 0x3e, 0x51, 0x8f, 0x4c, 0xd6, 0x67, 0xcc, 0x0f, 0x29, 0x26, 0x3c,
-	0xc0, 0x24, 0x8a, 0x98, 0x24, 0x32, 0x60, 0x91, 0xd0, 0x86, 0xcc, 0x79, 0x9d, 0x89, 0x26, 0x13,
-	0xd8, 0x23, 0x82, 0xea, 0x4a, 0xf8, 0xa9, 0xe8, 0x51, 0x49, 0x8a, 0x98, 0x13, 0x3f, 0x88, 0x94,
-	0xd8, 0x68, 0x77, 0x54, 0x1c, 0x67, 0x42, 0xea, 0x1f, 0xee, 0x29, 0xd8, 0xbf, 0x8b, 0x2d, 0x15,
-	0x2a, 0xab, 0x4c, 0xc8, 0x1a, 0x6d, 0x75, 0xa8, 0x90, 0x70, 0x1b, 0xd8, 0x41, 0xe3, 0xd0, 0x3a,
-	0xb1, 0xce, 0x36, 0x6b, 0x76, 0xd0, 0x70, 0x6f, 0xc0, 0x41, 0x52, 0x26, 0x38, 0x8b, 0x04, 0x85,
-	0x17, 0x60, 0x35, 0xfe, 0x56, 0xca, 0xad, 0x52, 0x1a, 0xcd, 0xb0, 0x23, 0x25, 0x57, 0x22, 0xf7,
-	0xc1, 0x64, 0x95, 0xc3, 0x70, 0x3a, 0xeb, 0x16, 0x80, 0x3f, 0x4e, 0x53, 0x29, 0x8f, 0x74, 0x53,
-	0x28, 0x6e, 0x0a, 0xe9, 0xf1, 0x98, 0xa6, 0x50, 0x95, 0xf8, 0xd4, 0x78, 0x6b, 0x53, 0x4e, 0xf7,
-	0xd5, 0x32, 0x90, 0x93, 0xfa, 0x33, 0x90, 0x2b, 0x4b, 0x21, 0x61, 0x25, 0x41, 0x63, 0x2b, 0x9a,
-	0xc2, 0x52, 0x1a, 0x9d, 0x34, 0x8d, 0x53, 0x7a, 0xb1, 0xc1, 0x9a, 0xc2, 0x81, 0x03, 0x9d, 0x0f,
-	0xf3, 0x73, 0x92, 0xe7, 0x0c, 0x3f, 0x53, 0x58, 0xaa, 0xd3, 0x71, 0x6e, 0xee, 0xf9, 0xf3, 0xe7,
-	0xdd, 0x76, 0x60, 0x16, 0x1b, 0x03, 0x56, 0xeb, 0x9d, 0xec, 0x18, 0xf7, 0x83, 0xc6, 0x00, 0xf6,
-	0xc1, 0x46, 0xec, 0x2a, 0x87, 0xe1, 0x62, 0x82, 0xe4, 0x4a, 0x16, 0x13, 0xfc, 0x1b, 0xad, 0x7b,
-	0xac, 0x08, 0x8e, 0x60, 0x7a, 0x01, 0xc1, 0xf5, 0xd5, 0xc7, 0xc8, 0xb1, 0x86, 0x23, 0xc7, 0xfa,
-	0x1e, 0x39, 0xd6, 0xdb, 0xd8, 0x49, 0x0d, 0xc7, 0x4e, 0xea, 0x6b, 0xec, 0xa4, 0xee, 0x73, 0x7e,
-	0x20, 0x1f, 0x3b, 0x1e, 0xaa, 0xb3, 0x66, 0xd2, 0xdc, 0xd5, 0x2f, 0xd9, 0xe3, 0x54, 0x78, 0xeb,
-	0xea, 0x9a, 0x5e, 0xfe, 0x06, 0x00, 0x00, 0xff, 0xff, 0x5f, 0x49, 0xc8, 0x02, 0x28, 0x03, 0x00,
-	0x00,
+	// 516 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xac, 0x94, 0xcf, 0x6b, 0x13, 0x41,
+	0x1c, 0xc5, 0x33, 0x69, 0xb4, 0x38, 0x82, 0x3f, 0x46, 0x31, 0xba, 0x84, 0xad, 0x0e, 0x35, 0xa9,
+	0x15, 0x66, 0x68, 0xf5, 0x2c, 0xc4, 0x82, 0x3d, 0x5a, 0x73, 0x14, 0x04, 0x77, 0x93, 0x61, 0x5d,
+	0x98, 0xdd, 0xd9, 0x76, 0x26, 0xd2, 0x52, 0x7a, 0xf1, 0x22, 0x82, 0x07, 0xc1, 0x8b, 0xfe, 0x47,
+	0x1e, 0x0b, 0x5e, 0x3c, 0x4a, 0xe2, 0x1f, 0x22, 0x3b, 0xf3, 0x4d, 0xbb, 0xe9, 0x6e, 0x9a, 0x1c,
+	0x72, 0x49, 0xc8, 0xe4, 0xbd, 0x79, 0x9f, 0xef, 0xdb, 0x99, 0xc5, 0xb7, 0x42, 0xa9, 0x22, 0xbe,
+	0x3f, 0x14, 0x07, 0x47, 0x2c, 0x3b, 0x50, 0x46, 0x91, 0xdb, 0xe2, 0x30, 0x48, 0x32, 0x29, 0x58,
+	0xfe, 0x8f, 0xfd, 0xf0, 0x5a, 0x91, 0x52, 0x91, 0x14, 0x3c, 0xc8, 0x62, 0x1e, 0xa4, 0xa9, 0x32,
+	0x81, 0x89, 0x55, 0xaa, 0x9d, 0xc1, 0xdb, 0xec, 0x2b, 0x9d, 0x28, 0xcd, 0xc3, 0x40, 0x0b, 0xb7,
+	0x13, 0xff, 0xb8, 0x15, 0x0a, 0x13, 0x6c, 0xf1, 0x2c, 0x88, 0xe2, 0xd4, 0x8a, 0x41, 0x4b, 0x6c,
+	0x5c, 0x5f, 0x25, 0x89, 0x48, 0x0d, 0xac, 0xdd, 0xb4, 0x6b, 0x99, 0xd2, 0xb0, 0x40, 0x37, 0xf0,
+	0xbd, 0x37, 0xf9, 0x36, 0xbb, 0xc2, 0xec, 0x38, 0x65, 0x4f, 0xec, 0x0f, 0x85, 0x36, 0xe4, 0x06,
+	0xae, 0xc7, 0x83, 0xfb, 0xe8, 0x21, 0xda, 0x68, 0xf4, 0xea, 0xf1, 0x80, 0xbe, 0xc6, 0xcd, 0x92,
+	0x52, 0x67, 0x2a, 0xd5, 0x82, 0x3c, 0xc7, 0xab, 0xb0, 0x64, 0xf5, 0xd7, 0xb7, 0x3d, 0x56, 0x1a,
+	0x8c, 0x4d, 0x4c, 0x13, 0x29, 0x7d, 0x0f, 0xd1, 0x5d, 0x29, 0x2f, 0x44, 0xbf, 0xc2, 0xf8, 0x7c,
+	0x1a, 0xd8, 0xb2, 0xcd, 0xdc, 0xe8, 0x2c, 0x1f, 0x9d, 0xb9, 0x12, 0x61, 0x74, 0xb6, 0x17, 0x44,
+	0x02, 0xbc, 0xbd, 0x82, 0x93, 0xfe, 0x40, 0xc0, 0x5c, 0x8c, 0xa8, 0x62, 0x5e, 0x59, 0x90, 0x99,
+	0xec, 0x4e, 0x91, 0xd5, 0x2d, 0x59, 0x67, 0x2e, 0x99, 0x8b, 0x9c, 0x42, 0x7b, 0x8c, 0xef, 0x4c,
+	0xda, 0xdc, 0x53, 0xba, 0xa2, 0xf4, 0x6b, 0xb6, 0xf4, 0x1d, 0x7c, 0x77, 0x5a, 0x06, 0xf4, 0x4f,
+	0x71, 0x23, 0xff, 0x0d, 0xdd, 0x34, 0x2b, 0xd0, 0xad, 0xdc, 0x8a, 0xe8, 0x3b, 0xc8, 0xea, 0x4a,
+	0x59, 0xcc, 0x5a, 0x56, 0xcb, 0x5f, 0x11, 0x40, 0x9e, 0xed, 0x5f, 0x82, 0x5c, 0x99, 0x0b, 0xb9,
+	0xb4, 0x66, 0xb7, 0x7f, 0x36, 0xf0, 0x15, 0x8b, 0x43, 0xbe, 0xa0, 0xb3, 0x67, 0x4c, 0x9e, 0x54,
+	0xa4, 0x57, 0x1f, 0x7c, 0x6f, 0x73, 0x11, 0xa9, 0x0b, 0xa6, 0x9d, 0x4f, 0xbf, 0xff, 0x7d, 0xaf,
+	0x3f, 0x22, 0x6b, 0x1c, 0x3c, 0xdc, 0x5e, 0xb0, 0xe2, 0xcd, 0xe3, 0xc7, 0xf1, 0xe0, 0x84, 0x7c,
+	0x46, 0x18, 0x83, 0xb9, 0x2b, 0xe5, 0x6c, 0x9c, 0xd2, 0x65, 0x98, 0x8d, 0x53, 0x3e, 0xd4, 0x94,
+	0x5a, 0x9c, 0x16, 0xf1, 0x66, 0xe3, 0x90, 0x13, 0xf7, 0x54, 0x48, 0xfb, 0x92, 0x31, 0x0b, 0xc7,
+	0xc4, 0xeb, 0xcc, 0xd5, 0x41, 0xf8, 0xba, 0x0d, 0xf7, 0x49, 0xab, 0x22, 0x3c, 0x7f, 0xe3, 0xb8,
+	0x22, 0x8e, 0xf1, 0x6a, 0xee, 0xca, 0x4b, 0x68, 0x5f, 0x32, 0xd9, 0x42, 0x04, 0x17, 0x0e, 0x1c,
+	0x5d, 0xb3, 0x04, 0x0f, 0x48, 0x73, 0x06, 0xc1, 0xcb, 0x17, 0xbf, 0x46, 0x3e, 0x3a, 0x1d, 0xf9,
+	0xe8, 0xef, 0xc8, 0x47, 0xdf, 0xc6, 0x7e, 0xed, 0x74, 0xec, 0xd7, 0xfe, 0x8c, 0xfd, 0xda, 0xdb,
+	0xf5, 0x28, 0x36, 0x1f, 0x86, 0x21, 0xeb, 0xab, 0x64, 0xda, 0x7c, 0xe8, 0xbe, 0xcc, 0x51, 0x26,
+	0x74, 0x78, 0xd5, 0xbe, 0x34, 0x9f, 0xfd, 0x0f, 0x00, 0x00, 0xff, 0xff, 0x73, 0xff, 0xaa, 0x0b,
+	0xca, 0x05, 0x00, 0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -264,7 +460,10 @@ const _ = grpc.SupportPackageIsVersion4
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type QueryClient interface {
-	// this line is used by starport scaffolding # 2
+	// Queries a comment by id.
+	Comment(ctx context.Context, in *QueryGetCommentRequest, opts ...grpc.CallOption) (*QueryGetCommentResponse, error)
+	// Queries a list of comment items.
+	CommentAll(ctx context.Context, in *QueryAllCommentRequest, opts ...grpc.CallOption) (*QueryAllCommentResponse, error)
 	Post(ctx context.Context, in *QueryGetPostRequest, opts ...grpc.CallOption) (*QueryGetPostResponse, error)
 	PostAll(ctx context.Context, in *QueryAllPostRequest, opts ...grpc.CallOption) (*QueryAllPostResponse, error)
 }
@@ -275,6 +474,24 @@ type queryClient struct {
 
 func NewQueryClient(cc grpc1.ClientConn) QueryClient {
 	return &queryClient{cc}
+}
+
+func (c *queryClient) Comment(ctx context.Context, in *QueryGetCommentRequest, opts ...grpc.CallOption) (*QueryGetCommentResponse, error) {
+	out := new(QueryGetCommentResponse)
+	err := c.cc.Invoke(ctx, "/example.blog.blog.Query/Comment", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *queryClient) CommentAll(ctx context.Context, in *QueryAllCommentRequest, opts ...grpc.CallOption) (*QueryAllCommentResponse, error) {
+	out := new(QueryAllCommentResponse)
+	err := c.cc.Invoke(ctx, "/example.blog.blog.Query/CommentAll", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
 }
 
 func (c *queryClient) Post(ctx context.Context, in *QueryGetPostRequest, opts ...grpc.CallOption) (*QueryGetPostResponse, error) {
@@ -297,7 +514,10 @@ func (c *queryClient) PostAll(ctx context.Context, in *QueryAllPostRequest, opts
 
 // QueryServer is the server API for Query service.
 type QueryServer interface {
-	// this line is used by starport scaffolding # 2
+	// Queries a comment by id.
+	Comment(context.Context, *QueryGetCommentRequest) (*QueryGetCommentResponse, error)
+	// Queries a list of comment items.
+	CommentAll(context.Context, *QueryAllCommentRequest) (*QueryAllCommentResponse, error)
 	Post(context.Context, *QueryGetPostRequest) (*QueryGetPostResponse, error)
 	PostAll(context.Context, *QueryAllPostRequest) (*QueryAllPostResponse, error)
 }
@@ -306,6 +526,12 @@ type QueryServer interface {
 type UnimplementedQueryServer struct {
 }
 
+func (*UnimplementedQueryServer) Comment(ctx context.Context, req *QueryGetCommentRequest) (*QueryGetCommentResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Comment not implemented")
+}
+func (*UnimplementedQueryServer) CommentAll(ctx context.Context, req *QueryAllCommentRequest) (*QueryAllCommentResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CommentAll not implemented")
+}
 func (*UnimplementedQueryServer) Post(ctx context.Context, req *QueryGetPostRequest) (*QueryGetPostResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Post not implemented")
 }
@@ -315,6 +541,42 @@ func (*UnimplementedQueryServer) PostAll(ctx context.Context, req *QueryAllPostR
 
 func RegisterQueryServer(s grpc1.Server, srv QueryServer) {
 	s.RegisterService(&_Query_serviceDesc, srv)
+}
+
+func _Query_Comment_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(QueryGetCommentRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(QueryServer).Comment(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/example.blog.blog.Query/Comment",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(QueryServer).Comment(ctx, req.(*QueryGetCommentRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Query_CommentAll_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(QueryAllCommentRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(QueryServer).CommentAll(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/example.blog.blog.Query/CommentAll",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(QueryServer).CommentAll(ctx, req.(*QueryAllCommentRequest))
+	}
+	return interceptor(ctx, in, info, handler)
 }
 
 func _Query_Post_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
@@ -358,6 +620,14 @@ var _Query_serviceDesc = grpc.ServiceDesc{
 	HandlerType: (*QueryServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
+			MethodName: "Comment",
+			Handler:    _Query_Comment_Handler,
+		},
+		{
+			MethodName: "CommentAll",
+			Handler:    _Query_CommentAll_Handler,
+		},
+		{
 			MethodName: "Post",
 			Handler:    _Query_Post_Handler,
 		},
@@ -368,6 +638,153 @@ var _Query_serviceDesc = grpc.ServiceDesc{
 	},
 	Streams:  []grpc.StreamDesc{},
 	Metadata: "blog/query.proto",
+}
+
+func (m *QueryGetCommentRequest) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *QueryGetCommentRequest) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *QueryGetCommentRequest) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if m.Id != 0 {
+		i = encodeVarintQuery(dAtA, i, uint64(m.Id))
+		i--
+		dAtA[i] = 0x8
+	}
+	return len(dAtA) - i, nil
+}
+
+func (m *QueryGetCommentResponse) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *QueryGetCommentResponse) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *QueryGetCommentResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if m.Comment != nil {
+		{
+			size, err := m.Comment.MarshalToSizedBuffer(dAtA[:i])
+			if err != nil {
+				return 0, err
+			}
+			i -= size
+			i = encodeVarintQuery(dAtA, i, uint64(size))
+		}
+		i--
+		dAtA[i] = 0xa
+	}
+	return len(dAtA) - i, nil
+}
+
+func (m *QueryAllCommentRequest) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *QueryAllCommentRequest) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *QueryAllCommentRequest) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if m.Pagination != nil {
+		{
+			size, err := m.Pagination.MarshalToSizedBuffer(dAtA[:i])
+			if err != nil {
+				return 0, err
+			}
+			i -= size
+			i = encodeVarintQuery(dAtA, i, uint64(size))
+		}
+		i--
+		dAtA[i] = 0xa
+	}
+	return len(dAtA) - i, nil
+}
+
+func (m *QueryAllCommentResponse) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *QueryAllCommentResponse) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *QueryAllCommentResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if m.Pagination != nil {
+		{
+			size, err := m.Pagination.MarshalToSizedBuffer(dAtA[:i])
+			if err != nil {
+				return 0, err
+			}
+			i -= size
+			i = encodeVarintQuery(dAtA, i, uint64(size))
+		}
+		i--
+		dAtA[i] = 0x12
+	}
+	if len(m.Comment) > 0 {
+		for iNdEx := len(m.Comment) - 1; iNdEx >= 0; iNdEx-- {
+			{
+				size, err := m.Comment[iNdEx].MarshalToSizedBuffer(dAtA[:i])
+				if err != nil {
+					return 0, err
+				}
+				i -= size
+				i = encodeVarintQuery(dAtA, i, uint64(size))
+			}
+			i--
+			dAtA[i] = 0xa
+		}
+	}
+	return len(dAtA) - i, nil
 }
 
 func (m *QueryGetPostRequest) Marshal() (dAtA []byte, err error) {
@@ -530,6 +947,63 @@ func encodeVarintQuery(dAtA []byte, offset int, v uint64) int {
 	dAtA[offset] = uint8(v)
 	return base
 }
+func (m *QueryGetCommentRequest) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	if m.Id != 0 {
+		n += 1 + sovQuery(uint64(m.Id))
+	}
+	return n
+}
+
+func (m *QueryGetCommentResponse) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	if m.Comment != nil {
+		l = m.Comment.Size()
+		n += 1 + l + sovQuery(uint64(l))
+	}
+	return n
+}
+
+func (m *QueryAllCommentRequest) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	if m.Pagination != nil {
+		l = m.Pagination.Size()
+		n += 1 + l + sovQuery(uint64(l))
+	}
+	return n
+}
+
+func (m *QueryAllCommentResponse) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	if len(m.Comment) > 0 {
+		for _, e := range m.Comment {
+			l = e.Size()
+			n += 1 + l + sovQuery(uint64(l))
+		}
+	}
+	if m.Pagination != nil {
+		l = m.Pagination.Size()
+		n += 1 + l + sovQuery(uint64(l))
+	}
+	return n
+}
+
 func (m *QueryGetPostRequest) Size() (n int) {
 	if m == nil {
 		return 0
@@ -593,6 +1067,367 @@ func sovQuery(x uint64) (n int) {
 }
 func sozQuery(x uint64) (n int) {
 	return sovQuery(uint64((x << 1) ^ uint64((int64(x) >> 63))))
+}
+func (m *QueryGetCommentRequest) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowQuery
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: QueryGetCommentRequest: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: QueryGetCommentRequest: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Id", wireType)
+			}
+			m.Id = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowQuery
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.Id |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+		default:
+			iNdEx = preIndex
+			skippy, err := skipQuery(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthQuery
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *QueryGetCommentResponse) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowQuery
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: QueryGetCommentResponse: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: QueryGetCommentResponse: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Comment", wireType)
+			}
+			var msglen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowQuery
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				msglen |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if msglen < 0 {
+				return ErrInvalidLengthQuery
+			}
+			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthQuery
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			if m.Comment == nil {
+				m.Comment = &Comment{}
+			}
+			if err := m.Comment.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+				return err
+			}
+			iNdEx = postIndex
+		default:
+			iNdEx = preIndex
+			skippy, err := skipQuery(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthQuery
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *QueryAllCommentRequest) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowQuery
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: QueryAllCommentRequest: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: QueryAllCommentRequest: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Pagination", wireType)
+			}
+			var msglen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowQuery
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				msglen |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if msglen < 0 {
+				return ErrInvalidLengthQuery
+			}
+			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthQuery
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			if m.Pagination == nil {
+				m.Pagination = &query.PageRequest{}
+			}
+			if err := m.Pagination.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+				return err
+			}
+			iNdEx = postIndex
+		default:
+			iNdEx = preIndex
+			skippy, err := skipQuery(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthQuery
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *QueryAllCommentResponse) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowQuery
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: QueryAllCommentResponse: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: QueryAllCommentResponse: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Comment", wireType)
+			}
+			var msglen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowQuery
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				msglen |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if msglen < 0 {
+				return ErrInvalidLengthQuery
+			}
+			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthQuery
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Comment = append(m.Comment, &Comment{})
+			if err := m.Comment[len(m.Comment)-1].Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+				return err
+			}
+			iNdEx = postIndex
+		case 2:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Pagination", wireType)
+			}
+			var msglen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowQuery
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				msglen |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if msglen < 0 {
+				return ErrInvalidLengthQuery
+			}
+			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthQuery
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			if m.Pagination == nil {
+				m.Pagination = &query.PageResponse{}
+			}
+			if err := m.Pagination.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+				return err
+			}
+			iNdEx = postIndex
+		default:
+			iNdEx = preIndex
+			skippy, err := skipQuery(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthQuery
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
 }
 func (m *QueryGetPostRequest) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)

@@ -1,25 +1,21 @@
-// x/blog/client/cli/queryPost.go
 package cli
 
 import (
 	"context"
-
-	"github.com/spf13/cobra"
+	"strconv"
 
 	"github.com/cosmos/cosmos-sdk/client"
 	"github.com/cosmos/cosmos-sdk/client/flags"
 	"github.com/example/blog/x/blog/types"
+	"github.com/spf13/cobra"
 )
 
-func CmdListPost() *cobra.Command {
+func CmdListComment() *cobra.Command {
 	cmd := &cobra.Command{
-		Use:   "list-post",
-		Short: "list all post",
+		Use:   "list-comment",
+		Short: "list all comment",
 		RunE: func(cmd *cobra.Command, args []string) error {
-			clientCtx, err := client.GetClientTxContext(cmd)
-			if err != nil {
-				return err
-			}
+			clientCtx := client.GetClientContextFromCmd(cmd)
 
 			pageReq, err := client.ReadPageRequest(cmd.Flags())
 			if err != nil {
@@ -28,11 +24,11 @@ func CmdListPost() *cobra.Command {
 
 			queryClient := types.NewQueryClient(clientCtx)
 
-			params := &types.QueryAllPostRequest{
+			params := &types.QueryAllCommentRequest{
 				Pagination: pageReq,
 			}
 
-			res, err := queryClient.PostAll(context.Background(), params)
+			res, err := queryClient.CommentAll(context.Background(), params)
 			if err != nil {
 				return err
 			}
@@ -41,29 +37,32 @@ func CmdListPost() *cobra.Command {
 		},
 	}
 
+	flags.AddPaginationFlagsToCmd(cmd, cmd.Use)
 	flags.AddQueryFlagsToCmd(cmd)
 
 	return cmd
 }
 
-func CmdShowPost() *cobra.Command {
+func CmdShowComment() *cobra.Command {
 	cmd := &cobra.Command{
-		Use:   "show-post [id]",
-		Short: "shows a post",
+		Use:   "show-comment [id]",
+		Short: "shows a comment",
 		Args:  cobra.ExactArgs(1),
 		RunE: func(cmd *cobra.Command, args []string) error {
-			clientCtx, err := client.GetClientTxContext(cmd)
+			clientCtx := client.GetClientContextFromCmd(cmd)
+
+			queryClient := types.NewQueryClient(clientCtx)
+
+			id, err := strconv.ParseUint(args[0], 10, 64)
 			if err != nil {
 				return err
 			}
 
-			queryClient := types.NewQueryClient(clientCtx)
-
-			params := &types.QueryGetPostRequest{
-				Id: args[0],
+			params := &types.QueryGetCommentRequest{
+				Id: id,
 			}
 
-			res, err := queryClient.Post(context.Background(), params)
+			res, err := queryClient.Comment(context.Background(), params)
 			if err != nil {
 				return err
 			}

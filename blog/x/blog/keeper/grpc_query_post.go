@@ -49,7 +49,7 @@ func (k Keeper) Post(c context.Context, req *types.QueryGetPostRequest) (*types.
 	ctx := sdk.UnwrapSDKContext(c)
 
 	store := prefix.NewStore(ctx.KVStore(k.storeKey), types.KeyPrefix(types.PostKey))
-	k.cdc.MustUnmarshalBinaryBare(store.Get(types.KeyPrefix(types.PostKey + req.Id)), &post)
+	k.cdc.MustUnmarshalBinaryBare(store.Get(types.KeyPrefix(types.PostKey+req.Id)), &post)
 
 	return &types.QueryGetPostResponse{Post: &post}, nil
 }

@@ -5,12 +5,14 @@ package example.blog.blog;
 option go_package = "github.com/example/blog/x/blog/types";
 
 import "gogoproto/gogo.proto";
+import "blog/comment.proto";
 
 message Post {
   string creator = 1;
   string id = 2;
   string title = 3; 
   string body = 4; 
+  repeated Comment comments = 5;
 }
 
 message MsgCreatePost {

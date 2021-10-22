@@ -14,34 +14,31 @@
   </tr>
  </table> -->
 
-### Alice Creates a new post
+### Alice Creates a new post:
 ![](images/PostCreationByAlice.png)
 
-### List post
+### List post:
 ![](images/ListPostWithoutComment.png)
 
-
-### Bob creates a comment
+### Bob creates a comment:
 ![](images/FirstCommentByBob.png)
 
-
-
-### Bob creates one more comment
+### Bob creates one more comment:
 ![](images/SecondCommentByBob.png)
 
-### Post with comments
+### Post with comments:
 ![](images/QueryAllPosts1.png)
 
-### Alice trying to comment on his own post
+### Alice trying to comment on his own post:
 ![](images/CommentAccessDenied.png)
 
-### Bob creates a post
+### Bob creates a post:
 ![](images/PostCreationByBob.png)
 
-### Meanwhile alice also commented on bob's post. All posts
+### Meanwhile alice also commented on bob's post. All posts:
 ![](images/QueryAllPosts2.png)
 
-### Trying to comment on a post which doesn't exist
+### Trying to comment on a post which doesn't exist:
 ![](images/PostNotFound.png)
 
 ## 💻 Run the project locally

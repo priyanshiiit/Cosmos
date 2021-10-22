@@ -13,6 +13,7 @@ import (
 	"github.com/example/blog/x/blog/types"
 )
 
+// Adding cli command to add comment
 func CmdCreateComment() *cobra.Command {
 	cmd := &cobra.Command{
 		Use:   "create-comment [body] [postID]",

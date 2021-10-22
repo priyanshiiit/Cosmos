@@ -56,11 +56,17 @@ func (k Keeper) AppendComment(
 	// Update comment count
 	k.SetCommentCount(ctx, count+1)
 
+	// Get Post 
 	post := k.GetPost(ctx, comment.PostID)
+
+	// Add new comment to comments array
 	post.Comments = append(post.Comments, &comment)
+
 	store2 := prefix.NewStore(ctx.KVStore(k.storeKey), types.KeyPrefix(types.PostKey))
 	key := types.KeyPrefix(types.PostKey + comment.PostID)
 	value := k.cdc.MustMarshalBinaryBare(&post)
+
+	// Set value in store
 	store2.Set(key, value)
 
 	return count

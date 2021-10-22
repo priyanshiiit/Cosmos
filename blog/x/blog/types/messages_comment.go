@@ -7,6 +7,7 @@ import (
 
 var _ sdk.Msg = &MsgCreateComment{}
 
+// Defining message to create comment
 func NewMsgCreateComment(creator string, body string, postID string) *MsgCreateComment {
 	return &MsgCreateComment{
 		Creator: creator,

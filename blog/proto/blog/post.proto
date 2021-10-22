@@ -12,6 +12,7 @@ message Post {
   string id = 2;
   string title = 3; 
   string body = 4; 
+  // adding comments
   repeated Comment comments = 5;
 }
 

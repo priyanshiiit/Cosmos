@@ -19,19 +19,24 @@ func (k msgServer) CreateComment(goCtx context.Context, msg *types.MsgCreateComm
 		PostID:  msg.PostID,
 	}
 
+	// Check of post exists
 	if !k.HasPost(ctx, msg.PostID) {
 		return nil, sdkerrors.Wrap(sdkerrors.ErrKeyNotFound, "Post with the specified id doesn't exist")
 	}
 
+	// Check if the commentor is same as post owner
 	if msg.Creator == k.GetPostOwner(ctx, msg.PostID) {
-		return nil, sdkerrors.Wrap(sdkerrors.ErrUnauthorized, "can't comment on your own post")
+		return nil, sdkerrors.Wrap(sdkerrors.ErrUnauthorized, "Can't comment on your own post")
 	}
 
 	t := ctx.BlockTime()
 	upperTimeLimit := t.Add(time.Second*5)
 	lowerTimeLimit := t.Add(-time.Second*5)
+
+	// Time restrictions on commenting
 	if time.Now().After(upperTimeLimit) || time.Now().Before(lowerTimeLimit) {
-		return nil, sdkerrors.Wrap(sdkerrors.ErrUnauthorized, "can't comment due to timeout")
+		// Was not able to find a relatable error code so took ErrUnauthorized temporarily
+		return nil, sdkerrors.Wrap(sdkerrors.ErrUnauthorized, "Can't comment due to timeout")
 	}
 
 	id := k.AppendComment(

@@ -3,6 +3,7 @@ package keeper
 import (
 	"context"
 	"fmt"
+	"time"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	sdkerrors "github.com/cosmos/cosmos-sdk/types/errors"
@@ -16,6 +17,21 @@ func (k msgServer) CreateComment(goCtx context.Context, msg *types.MsgCreateComm
 		Creator: msg.Creator,
 		Body:    msg.Body,
 		PostID:  msg.PostID,
+	}
+
+	if !k.HasPost(ctx, msg.PostID) {
+		return nil, sdkerrors.Wrap(sdkerrors.ErrKeyNotFound, "Post with the specified id doesn't exist")
+	}
+
+	if msg.Creator == k.GetPostOwner(ctx, msg.PostID) {
+		return nil, sdkerrors.Wrap(sdkerrors.ErrUnauthorized, "can't comment on your own post")
+	}
+
+	t := ctx.BlockTime()
+	upperTimeLimit := t.Add(time.Second*5)
+	lowerTimeLimit := t.Add(-time.Second*5)
+	if time.Now().After(upperTimeLimit) || time.Now().Before(lowerTimeLimit) {
+		return nil, sdkerrors.Wrap(sdkerrors.ErrUnauthorized, "can't comment due to timeout")
 	}
 
 	id := k.AppendComment(

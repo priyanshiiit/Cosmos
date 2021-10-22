@@ -2,10 +2,11 @@ package keeper
 
 import (
 	"encoding/binary"
+	"strconv"
+
 	"github.com/cosmos/cosmos-sdk/store/prefix"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/example/blog/x/blog/types"
-	"strconv"
 )
 
 // GetCommentCount get the total number of TypeName.LowerCamel
@@ -54,6 +55,13 @@ func (k Keeper) AppendComment(
 
 	// Update comment count
 	k.SetCommentCount(ctx, count+1)
+
+	post := k.GetPost(ctx, comment.PostID)
+	post.Comments = append(post.Comments, &comment)
+	store2 := prefix.NewStore(ctx.KVStore(k.storeKey), types.KeyPrefix(types.PostKey))
+	key := types.KeyPrefix(types.PostKey + comment.PostID)
+	value := k.cdc.MustMarshalBinaryBare(&post)
+	store2.Set(key, value)
 
 	return count
 }
